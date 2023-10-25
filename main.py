@@ -45,3 +45,15 @@ print('Chunk length: ' + str(chunk_length))
 
 
 '''Populate color array'''
+for i in range(number_of_chunks):
+    current_chunk = int(i * chunk_length)
+    chunk = samples[current_chunk:current_chunk + chunk_length]
+    np.append(color_array, np.abs(int(np.mean(chunk))))
+
+print(color_array)
+color_array.reshape(1, 10)
+
+plt.imshow(color_array)
+
+plt.show()
+
