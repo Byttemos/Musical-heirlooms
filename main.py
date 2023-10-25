@@ -31,6 +31,7 @@ else:
 '''Import waveform and post processing'''
 src = '/home/hriskaer/kode/musical_heirlooms/source.wav'
 audio = AudioSegment.from_file(src).split_to_mono()[0]
+samples = np.array(audio.get_array_of_samples())
 sample_rate = audio.frame_rate
 print('Waveform imported. Sample rate: ' + str(sample_rate))
 
@@ -38,8 +39,8 @@ print('Waveform imported. Sample rate: ' + str(sample_rate))
 '''Establish canvas'''
 canvas = {'width':10, 'height':10}
 number_of_chunks = canvas['height']
-chunk_length = len(src) // number_of_chunks
-color_array = []
+chunk_length = len(samples) // number_of_chunks
+color_array = np.empty((1, canvas['height']))
 print('Canvas dimensions: ' + str(canvas))
 print('Chunk length: ' + str(chunk_length))
 
