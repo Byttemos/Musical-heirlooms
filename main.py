@@ -45,15 +45,3 @@ print('Chunk length: ' + str(chunk_length))
 
 
 '''Populate color array'''
-for i in range(number_of_chunks):
-    chunk = src[i * chunk_length : (i + 1) * chunk_length]
-    avg_amplitude = np.sqrt(np.mean(np.array(chunk)**2))
-    red_value = int(255 * (avg_amplitude / src.max_possible_amplitude))
-    color = (red_value, 0, 0)
-    color_array.append(color)
-
-image = np.array(color_array, dtype = uint8).reshape(canvas['width'], number_of_chunks, 3)
-
-plt.imshow(image)
-plt.axis('off')
-plt.show()
